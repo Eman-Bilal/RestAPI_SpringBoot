@@ -23,7 +23,7 @@ public class UserService {
         List<User> all = userStore.getAll();
         List<User> result = new ArrayList<>();
         for (User u : all) {
-            if (u.getDepartment() != null && u.getDepartment().getDepartmentId() == departmentId) {
+            if (u.getDepartment() != null && u.getDepartment().getId() == departmentId) {
                 result.add(u);
             }
         }

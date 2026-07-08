@@ -1,14 +1,28 @@
 package com.example.RESTAPI_Application.Models;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long departmentId;
     private String name;
-    private int departmentId;
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Course> courses = new ArrayList<>();
 
     public Department() {}
+
+    public Long getId() {
+        return departmentId;
+    }
+
+    public void setId(Long id) {
+        this.departmentId = id;
+    }
 
     public String getName() {
         return name;
@@ -16,14 +30,6 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
     }
 
     public List<Course> getCourses() {
