@@ -1,6 +1,7 @@
 package com.example.RESTAPI_Application.Controller;
 
 import com.example.RESTAPI_Application.Models.User;
+import com.example.RESTAPI_Application.Repository.UserRepository;
 import com.example.RESTAPI_Application.Service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,12 +49,12 @@ public class UserController {
 
     @GetMapping("getAll")
     public List<User> getAll() {
-        return userService.getUserStore().getAll();
+        return userService.getUser();
     }
 
     @GetMapping("getById/{id}")
     public ResponseEntity<?> getById(@PathVariable int id) {
-        User user = userService.getUserStore().getById(id);
+        User user = userService.getUserById(id);
         if (user == null) {
             return ResponseEntity.badRequest().body("User not found");
         }
@@ -67,7 +68,7 @@ public class UserController {
 
     @PutMapping("update/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody User userRecord) {
-        boolean updated = userService.getUserStore().update(id, userRecord);
+        boolean updated = userService.updateUser(id, userRecord);
         if (!updated) {
             return ResponseEntity.badRequest().body("Id not Found");
         }
@@ -76,7 +77,7 @@ public class UserController {
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
-        boolean deleted = userService.getUserStore().delete(id);
+        boolean deleted = userService.deleteUser(id);
         if (!deleted) {
             return ResponseEntity.badRequest().body("Id not Found");
         }
