@@ -1,5 +1,10 @@
 package com.example.RESTAPI_Application.Models;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Embeddable
 public class UserDetail {
     private String firstName;
     private String middleInitials;

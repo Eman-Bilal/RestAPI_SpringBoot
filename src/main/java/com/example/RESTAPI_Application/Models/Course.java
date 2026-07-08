@@ -1,21 +1,36 @@
 package com.example.RESTAPI_Application.Models;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Course {
-    private int courseId;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String courseName;
     private String courseCode;
     private int creditHours;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public Course() {}
 
-    public int getCourseId() {
-        return courseId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setId(Long id) {
+        this.id = id;
     }
-
     public String getCourseName() {
         return courseName;
     }

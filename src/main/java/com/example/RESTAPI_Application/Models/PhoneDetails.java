@@ -1,5 +1,8 @@
 package com.example.RESTAPI_Application.Models;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class PhoneDetails {
     private String primary;
     private String emergency;
@@ -7,7 +10,6 @@ public class PhoneDetails {
     public PhoneDetails() {
 
     }
-
     public String getPrimary() {
         return primary;
     }
