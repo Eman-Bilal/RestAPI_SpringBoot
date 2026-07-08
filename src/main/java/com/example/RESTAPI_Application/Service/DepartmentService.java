@@ -2,37 +2,37 @@ package com.example.RESTAPI_Application.Service;
 
 import com.example.RESTAPI_Application.Models.Course;
 import com.example.RESTAPI_Application.Models.Department;
-import com.example.RESTAPI_Application.Store.CourseStore;
-import com.example.RESTAPI_Application.Store.DepartmentStore;
+import com.example.RESTAPI_Application.Repository.CourseRepository;
+import com.example.RESTAPI_Application.Repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartmentService {
-    private final DepartmentStore departmentStore;
-    private final CourseStore courseStore;
-    private List<Course> courses = new ArrayList<>();
+    private final DepartmentRepository departmentStore;
+    private final CourseRepository courseStore;
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
-    public DepartmentService(DepartmentStore departmentStore, CourseStore courseStore) {
+    public DepartmentService(DepartmentRepository departmentStore, CourseRepository courseStore) {
         this.departmentStore = departmentStore;
         this.courseStore = courseStore;
     }
 
     public void addCourseToDepartment(int departmentId, int courseId) {
-        Department dept = departmentStore.getById(departmentId);
-        Course course = courseStore.getById(courseId);
-        if (dept == null) throw new IllegalArgumentException("Department not found");
-        if (course == null) throw new IllegalArgumentException("Course not found");
-        dept.getCourses().add(course);
+        Department dept = departmentStore.findById((long) departmentId)
+                .orElseThrow(()-> new IllegalArgumentException("Department not found"));
+        Course course = courseStore.findById((long) courseId)
+                .orElseThrow(()-> new IllegalArgumentException("Course not found"));
+        course.setDepartment(dept);
+        courseStore.save(course);
+    }
+
+    public Department create(Department department){
+        return departmentStore.save(department);
+    }
+
+    public List<Department> getAll() {
+        return departmentStore.findAll();
     }
 }
