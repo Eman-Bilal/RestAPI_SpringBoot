@@ -1,7 +1,6 @@
 package com.example.RESTAPI_Application.Controller;
 
-import com.example.RESTAPI_Application.Models.Department;
-import com.example.RESTAPI_Application.Repository.DepartmentRepository;
+import com.example.RESTAPI_Application.Entities.Department;
 import com.example.RESTAPI_Application.Service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

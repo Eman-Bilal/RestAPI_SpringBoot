@@ -1,7 +1,7 @@
 package com.example.RESTAPI_Application.Service;
 
-import com.example.RESTAPI_Application.Models.Course;
-import com.example.RESTAPI_Application.Models.Department;
+import com.example.RESTAPI_Application.Entities.Course;
+import com.example.RESTAPI_Application.Entities.Department;
 import com.example.RESTAPI_Application.Repository.CourseRepository;
 import com.example.RESTAPI_Application.Repository.DepartmentRepository;
 import org.springframework.stereotype.Service;

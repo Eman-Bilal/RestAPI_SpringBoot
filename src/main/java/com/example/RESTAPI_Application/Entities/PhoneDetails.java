@@ -1,4 +1,4 @@
-package com.example.RESTAPI_Application.Models;
+package com.example.RESTAPI_Application.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

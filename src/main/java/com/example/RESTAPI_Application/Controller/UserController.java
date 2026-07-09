@@ -1,6 +1,6 @@
 package com.example.RESTAPI_Application.Controller;
 
-import com.example.RESTAPI_Application.Models.User;
+import com.example.RESTAPI_Application.Entities.User;
 import com.example.RESTAPI_Application.Service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

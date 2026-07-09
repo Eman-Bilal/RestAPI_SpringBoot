@@ -1,7 +1,7 @@
 package com.example.RESTAPI_Application.Service;
 
-import com.example.RESTAPI_Application.Models.Department;
-import com.example.RESTAPI_Application.Models.User;
+import com.example.RESTAPI_Application.Entities.Department;
+import com.example.RESTAPI_Application.Entities.User;
 import com.example.RESTAPI_Application.Repository.DepartmentRepository;
 import com.example.RESTAPI_Application.Repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,7 @@ public class UserService {
     }
 
     public User getUserById(int id){
-        return (userStore.findById(Long.valueOf(id))).orElse(null);
+        return (userStore.findById((long) id)).orElse(null);
     }
 
     public Boolean updateUser(int id, User userRecord){
@@ -58,9 +58,6 @@ public class UserService {
     }
 
     public boolean deleteUser(int id){
-        if(!userStore.existsById((long)id)){
-            return false;
-        }
-        return true;
+      return userStore.existsById((long) id);
     }
 }

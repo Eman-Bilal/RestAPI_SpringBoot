@@ -1,6 +1,6 @@
 package com.example.RESTAPI_Application.Controller;
 
-import com.example.RESTAPI_Application.Models.Course;
+import com.example.RESTAPI_Application.Entities.Course;
 import com.example.RESTAPI_Application.Service.CourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
