@@ -6,8 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class PhoneDetails {
 
     @Id
@@ -20,31 +26,4 @@ public class PhoneDetails {
 
     @Pattern(regexp = "^\\+92\\d{10}$", message = "Phone number must be in the format +923000000000")
     private String emergency;
-
-    public PhoneDetails() {
-
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPrimaryPhone() {
-        return primaryPhone;
-    }
-
-    public void setPrimaryPhone(String primary) {
-        this.primaryPhone = primary;
-    }
-
-    public String getEmergency() {
-        return emergency;
-    }
-
-    public void setEmergency(String emergency) {
-        this.emergency = emergency;
-    }
 }
