@@ -9,6 +9,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank(message = "Role is required")
     private String role;
 

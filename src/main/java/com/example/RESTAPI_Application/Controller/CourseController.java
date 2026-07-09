@@ -19,6 +19,7 @@ public class CourseController {
   public List<Course> getAll(){
     return courseStore.getAll();
   }
+
   @PostMapping("/create")
   public ResponseEntity<Course> create(@RequestBody Course course){
 

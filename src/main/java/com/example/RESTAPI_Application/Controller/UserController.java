@@ -7,26 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-//        {
-//        "name": "Ahmed Ali",
-//        "cnic": "42101-1234567-1",
-//        "email": "ahmed.ali@example.com",
-//        "phoneNo": "+923001234567"
-//        },
-//        {
-//        "name": "Ayesha Khan",
-//        "cnic": "35202-9876543-2",
-//        "email": "ayesha.khan@example.com",
-//        "phoneNo": "+923219876543"
-//        }
-//        ]
-//  {
-//          "phone": "+923192921983",
-//          "name": "b ",
-//          "cnic": "17291-1882928-2",
-//          "email": "ejjj@gfdfjj.pk"
-//          }
-
 @RestController
 @RequestMapping("user")
 public class UserController {

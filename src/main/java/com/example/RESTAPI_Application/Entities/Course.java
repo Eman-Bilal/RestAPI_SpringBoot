@@ -1,5 +1,6 @@
 package com.example.RESTAPI_Application.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,16 +10,19 @@ public class Course {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank(message = "Course Name is required")
     private String courseName;
 
     @NotBlank(message = "Course code is required")
     private String courseCode;
+
     @NotNull(message = "Course credit hours are required")
     private int creditHours;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonIgnoreProperties("courses")
     private Department department;
 
     public Department getDepartment() {

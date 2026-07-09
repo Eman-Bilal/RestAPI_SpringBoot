@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Pattern;
 public class PhoneDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   // AUTO-INCREMENT
     private Long id;
 
     @NotBlank(message = "Phone number is required")
