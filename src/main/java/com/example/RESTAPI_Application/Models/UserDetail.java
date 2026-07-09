@@ -1,19 +1,44 @@
 package com.example.RESTAPI_Application.Models;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
-@Embeddable
+@Entity
 public class UserDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotBlank(message = "Name is required")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Name must contain only letters and spaces")
     private String firstName;
+
     private String middleInitials;
+
+    @NotBlank(message = "Name is required")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Name must contain only letters and spaces")
     private String lastName;
+
+    @NotBlank(message = "Enter the Cnic")
+    @Pattern(regexp = "\\d{5}-\\d{7}-\\d{1}", message = "Enter the Cnic with dashes")
     private String cnic;
+
+    @Email
+    @NotBlank(message = "Email is required")
     private String email;
 
 
     public UserDetail() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

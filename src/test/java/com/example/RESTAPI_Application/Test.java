@@ -12,7 +12,7 @@ public class Test {
     public static void main(String[] args)
     {
 
-        System.out.println(user.findByDepartment_Id(1L));
+//        System.out.println(user.findByDepartment_Id(1L));
         System.out.println(departmentRepository.findById(0L));
         System.out.println(course.findById(1L));
 
