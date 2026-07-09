@@ -1,8 +1,8 @@
 package com.example.RESTAPI_Application.Controller;
 
 import com.example.RESTAPI_Application.Models.User;
-import com.example.RESTAPI_Application.Repository.UserRepository;
 import com.example.RESTAPI_Application.Service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("create/{departmentId}")
-    public ResponseEntity<?> create(@PathVariable int departmentId, @RequestBody User userRecord) {
+    public ResponseEntity<?> create(@PathVariable int departmentId,@Valid @RequestBody User userRecord) {
         try {
             User created = userService.createUser(userRecord, departmentId);
             return ResponseEntity.ok(created);
@@ -67,7 +67,7 @@ public class UserController {
     }
 
     @PutMapping("update/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody User userRecord) {
+    public ResponseEntity<String> update(@PathVariable int id,@Valid @RequestBody User userRecord) {
         boolean updated = userService.updateUser(id, userRecord);
         if (!updated) {
             return ResponseEntity.badRequest().body("Id not Found");

@@ -1,18 +1,25 @@
 package com.example.RESTAPI_Application.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private int userId;
+    @NotBlank(message = "Role is required")
     private String role;
 
-    @Embedded
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="phone_id")
+    @Valid
     private PhoneDetails phoneDetails;
-    @Embedded
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_detail_id")
+    @Valid
     private UserDetail userDetail;
 
     @ManyToOne
@@ -27,14 +34,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getRole() {

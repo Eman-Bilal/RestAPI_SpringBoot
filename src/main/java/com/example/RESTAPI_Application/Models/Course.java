@@ -10,6 +10,7 @@ public class Course {
     private String courseName;
     private String courseCode;
     private int creditHours;
+
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;

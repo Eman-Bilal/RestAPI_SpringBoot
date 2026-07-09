@@ -50,7 +50,7 @@ public class UserService {
             existing.getUserDetail().setFirstName(userRecord.getUserDetail().getFirstName());
             existing.getUserDetail().setCnic(userRecord.getUserDetail().getCnic());
             existing.getUserDetail().setEmail(userRecord.getUserDetail().getEmail());
-            existing.getPhoneDetails().setPrimary(userRecord.getPhoneDetails().getPrimary());
+            existing.getPhoneDetails().setPrimaryPhone(userRecord.getPhoneDetails().getPrimaryPhone());
 
             userStore.save(existing);
             return true;
