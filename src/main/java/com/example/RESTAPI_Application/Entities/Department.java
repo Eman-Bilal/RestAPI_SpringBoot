@@ -19,6 +19,7 @@ public class Department {
     private Long Id;
 
     @NotBlank(message = "Department name is required")
+    @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -20,9 +20,11 @@ public class Course {
     private Long id;
 
     @NotBlank(message = "Course Name is required")
+    @Column(unique = true)
     private String courseName;
 
     @NotBlank(message = "Course code is required")
+    @Column(unique = true)
     private String courseCode;
 
     @NotNull(message = "Course credit hours are required")

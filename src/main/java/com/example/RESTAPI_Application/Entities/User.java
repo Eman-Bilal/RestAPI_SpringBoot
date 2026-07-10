@@ -16,15 +16,17 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @NotBlank(message = "Role is required")
-    private String role;
+    @NotBlank(message = "Role is required"  )
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="phone_id")
     @Valid
     private PhoneDetails phoneDetails;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="user_detail_id")
     @Valid
     private UserDetail userDetail;
@@ -32,4 +34,5 @@ public class User {
     @ManyToOne
     @JoinColumn(name="department_id")
     private Department department;
+
 }

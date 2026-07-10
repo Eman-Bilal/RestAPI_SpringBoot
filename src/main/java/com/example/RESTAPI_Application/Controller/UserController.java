@@ -1,5 +1,6 @@
 package com.example.RESTAPI_Application.Controller;
 
+import com.example.RESTAPI_Application.Entities.Role;
 import com.example.RESTAPI_Application.Entities.User;
 import com.example.RESTAPI_Application.Service.UserService;
 import jakarta.validation.Valid;
@@ -20,6 +21,7 @@ public class UserController {
     @PostMapping("create/{departmentId}")
     public ResponseEntity<?> create(@PathVariable int departmentId,@Valid @RequestBody User userRecord) {
         try {
+            userRecord.setRole(Role.USER);
             User created = userService.createUser(userRecord, departmentId);
             return ResponseEntity.ok(created);
         } catch (IllegalArgumentException e) {
